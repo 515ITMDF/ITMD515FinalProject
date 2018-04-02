@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<style type="text/css">
+    #content{
+        margin:auto;
+        width:800px;
+        text-align:center;
+        float:center;
+    }
+    #header{
+        text-algin:center;
+        width:790px;
+        font: 25px Georgia, "Times New Roman", Times, serif;
+        margin: auto;
+    }
+    #title{
+        width:300px;
+        height:300px;
+        float:right;
+        margin-right:50px;
+        margin-top:10px;
+    }
+    span{
+        font: 25px Georgia, "Times New Roman", Times, serif;
+    }
+    #description{
+        width:300px;
+        height:260px;
+        background:#EEE;
+        font: 25px Georgia, "Times New Roman", Times, serif;
+    }
+    #table{
+        float:left;
+        margin-left:50px;
+        font: 25px Georgia, "Times New Roman", Times, serif;
+    }
+    table{
+
+        border-collapse:separate;
+        border-spacing:10px 20px;
+    }
+    #button-wrapper{
+        float:left;
+        margin-left:50px;
+        margin-top:20px;
+    }
+</style>
+</head>
+
+<body>
+<div id="content">
+    <div id="header">
+        <h1>Payment page</h1>
+        <hr>
+    </div>
+    <div id="table">
+        <table width="600" height="60" cellpadding="0" cellspacing="0" border="0" th:each="m,index:${car}" >
+            <tr>
+                <td width="70%" valign="top">
+            <tr>
+                <td><B>Car type:</B></td><td><B th:text="${m.type}"></B></td>
+            </tr>
+            <tr>
+                <td>Car Id:</td><td th:text="${m.id}"></td>
+            </tr>
+            <tr>
+                <td>seats number:</td><td th:text="${m.seat}"></td>
+            </tr>
+            <tr>
+                <td>peer hour</td><td th:text="${m.per_hour}"></td>
+            </tr>
+            <tr>
+                <td>peer week</td><td th:text="${m.per_week}"></td>
+            </tr>
+            <tr th:each="d,index:${driver}">
+                <td>Driver name</td><td th:text="${d.name}"></td>
+            </tr>
+        </table>
+    </div>
+    <div id="button-wrapper">
+        <form action="/tran" method="post" onsubmit="return check2(this)">
+            <label><span>Duration</span> <input id="duration" name="duration" type="text"/></label><br>
+        <button id="order">Rent this car</button>
+            <input type="reset" />
+        </form>
+    </div>
+</div>
+</body>
+</html>

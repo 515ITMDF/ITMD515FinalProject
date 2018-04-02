@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://java.sun.com/xml/ns/persistence/orm">
+<head>
+
+    <title>cardetial</title>
+
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="expires" content="0">
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="This is my page">
+    <!--
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    -->
+    <style type="text/css">
+        #content{
+            margin:auto;
+            width:800px;
+            text-align:center;
+            float:center;
+        }
+        #header{
+            text-algin:center;
+            width:790px;
+            font: 25px Georgia, "Times New Roman", Times, serif;
+            margin: auto;
+        }
+        #title{
+            width:300px;
+            height:300px;
+            float:right;
+            margin-right:50px;
+            margin-top:10px;
+        }
+        span{
+            font: 25px Georgia, "Times New Roman", Times, serif;
+        }
+        #description{
+            width:300px;
+            height:260px;
+            background:#EEE;
+            font: 25px Georgia, "Times New Roman", Times, serif;
+        }
+        #table{
+            float:left;
+            margin-left:50px;
+            font: 25px Georgia, "Times New Roman", Times, serif;
+        }
+        table{
+
+            border-collapse:separate;
+            border-spacing:10px 20px;
+        }
+        #button-wrapper{
+            float:left;
+            margin-left:50px;
+            margin-top:20px;
+        }
+    </style>
+</head>
+
+<body>
+<div id="content">
+    <div id="header">
+        <h1>Car detail</h1>
+        <hr>
+    </div>
+    <div id="table">
+        <table width="600" height="60" cellpadding="0" cellspacing="0" border="0" th:each="m,index:${car}">
+            <tr>
+                <td width="70%" valign="top">
+            <tr>
+            <td><B>Car type:</B></td><td><B th:text="${m.type}"></B></td>
+            </tr>
+            <tr>
+                <td>Car Id:</td><td th:text="${m.id}"></td>
+            </tr>
+            <tr>
+                <td>seats number:</td><td th:text="${m.seat}"></td>
+            </tr>
+            <tr>
+                <td>peer hour</td><td th:text="${m.per_hour}"></td>
+            </tr>
+            <tr>
+                <td>peer week</td><td th:text="${m.per_week}"></td>
+            </tr>
+        </table>
+    </div>
+    <div id="button-wrapper" th:each="m,index:${car}">
+        <a th:href="@{/payment(carid=${m.id})}"><button id="order">Rent this car</button></a>
+        <a href="/home"><button id="return">return</button></a>
+    </div>
+</div>
+</body>
+</html>
